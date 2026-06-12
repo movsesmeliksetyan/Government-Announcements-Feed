@@ -18,6 +18,9 @@ coverage
 # Local agent / assistant config
 .claude
 
+# Personal notes and task brief (not part of submission)
+docs
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
