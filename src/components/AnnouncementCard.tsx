@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import type { Announcement } from '../types'
 import { CategoryBadge, UrgentBadge } from './Badges'
+import { BookmarkButton } from './BookmarkButton'
 import styles from './AnnouncementCard.module.css'
 
 export function AnnouncementCard({ announcement }: { announcement: Announcement }) {
@@ -15,8 +16,11 @@ export function AnnouncementCard({ announcement }: { announcement: Announcement 
         <h2 className={styles.title}>{announcement.title}</h2>
       </Link>
       <div className={styles.meta}>
-        <CategoryBadge category={announcement.category} />
-        {announcement.isUrgent && <UrgentBadge />}
+        <div className={styles.badges}>
+          <CategoryBadge category={announcement.category} />
+          {announcement.isUrgent && <UrgentBadge />}
+        </div>
+        <BookmarkButton id={announcement.id} />
       </div>
     </li>
   )

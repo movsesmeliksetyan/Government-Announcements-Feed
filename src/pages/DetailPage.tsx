@@ -1,6 +1,7 @@
 import { Link, useLocation, useParams } from 'react-router-dom'
 import { useAnnouncementDetail } from '../hooks/useAnnouncementDetail'
 import { CategoryBadge, UrgentBadge } from '../components/Badges'
+import { BookmarkButton } from '../components/BookmarkButton'
 import styles from './DetailPage.module.css'
 
 export function DetailPage() {
@@ -36,6 +37,7 @@ export function DetailPage() {
             {announcement.isUrgent && <UrgentBadge />}
           </div>
           <h1 className={styles.title}>{announcement.title}</h1>
+          <BookmarkButton id={announcement.id} />
           <p className={styles.body}>{announcement.body}</p>
         </article>
       )}
