@@ -1,0 +1,50 @@
+.shell {
+  min-height: 100vh;
+}
+
+.header {
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.nav {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navLink {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.navLink:hover {
+  color: var(--text);
+}
+
+.active {
+  color: var(--accent);
+}
+
+.main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}

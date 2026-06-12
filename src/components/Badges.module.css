@@ -1,0 +1,36 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.health {
+  background: #e3f5ea;
+  color: #1d6b42;
+}
+
+.transport {
+  background: #e2eefb;
+  color: #1f5fae;
+}
+
+.education {
+  background: #fdf0dd;
+  color: #8a5a14;
+}
+
+.infrastructure {
+  background: #eceef1;
+  color: #4a525c;
+}
+
+.urgent {
+  background: #fde6e6;
+  color: #b32424;
+}
