@@ -34,3 +34,26 @@
   background: #fde6e6;
   color: #b32424;
 }
+
+@media (prefers-color-scheme: dark) {
+  .health {
+    background: #143524;
+    color: #7fd1a3;
+  }
+  .transport {
+    background: #14263b;
+    color: #8fbdec;
+  }
+  .education {
+    background: #352713;
+    color: #e0b774;
+  }
+  .infrastructure {
+    background: #262a30;
+    color: #b3bcc6;
+  }
+  .urgent {
+    background: #3a1818;
+    color: #f0a0a0;
+  }
+}

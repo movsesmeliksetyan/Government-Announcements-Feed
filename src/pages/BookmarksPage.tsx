@@ -1,6 +1,8 @@
 import { useAnnouncements } from '../hooks/useAnnouncements'
 import { useBookmarks } from '../hooks/useBookmarks'
 import { AnnouncementCard } from '../components/AnnouncementCard'
+import { CardSkeletonList } from '../components/Skeleton'
+import { ErrorState } from '../components/ErrorState'
 import styles from './BookmarksPage.module.css'
 
 export function BookmarksPage() {
@@ -11,7 +13,10 @@ export function BookmarksPage() {
     return (
       <>
         <h1 className={styles.heading}>Bookmarks</h1>
-        <p className={styles.muted}>Loading…</p>
+        <p className={styles.srOnly} role="status">
+          Loading…
+        </p>
+        <CardSkeletonList count={3} />
       </>
     )
   }
@@ -20,12 +25,7 @@ export function BookmarksPage() {
     return (
       <>
         <h1 className={styles.heading}>Bookmarks</h1>
-        <div role="alert" className={styles.error}>
-          <p>{error?.message ?? 'Could not load announcements.'}</p>
-          <button type="button" onClick={retry} className={styles.retry}>
-            Retry
-          </button>
-        </div>
+        <ErrorState message={error?.message ?? 'Could not load announcements.'} onRetry={retry} />
       </>
     )
   }

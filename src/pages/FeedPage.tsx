@@ -3,6 +3,8 @@ import { useFeedFilters } from '../hooks/useFeedFilters'
 import { filterAnnouncements } from '../lib/filter'
 import { CATEGORIES, type CategoryFilter } from '../types'
 import { AnnouncementCard } from '../components/AnnouncementCard'
+import { CardSkeletonList } from '../components/Skeleton'
+import { ErrorState } from '../components/ErrorState'
 import styles from './FeedPage.module.css'
 
 const FILTER_OPTIONS: CategoryFilter[] = ['All', ...CATEGORIES]
@@ -15,7 +17,10 @@ export function FeedPage() {
     return (
       <>
         <h1 className={styles.heading}>Announcements</h1>
-        <p className={styles.muted}>Loading announcements…</p>
+        <p className={styles.srOnly} role="status">
+          Loading announcements…
+        </p>
+        <CardSkeletonList />
       </>
     )
   }
@@ -24,12 +29,7 @@ export function FeedPage() {
     return (
       <>
         <h1 className={styles.heading}>Announcements</h1>
-        <div role="alert" className={styles.error}>
-          <p>{error?.message ?? 'Could not load announcements.'}</p>
-          <button type="button" onClick={retry} className={styles.retry}>
-            Retry
-          </button>
-        </div>
+        <ErrorState message={error?.message ?? 'Could not load announcements.'} onRetry={retry} />
       </>
     )
   }
@@ -64,6 +64,12 @@ export function FeedPage() {
           </select>
         </label>
       </div>
+
+      <p className={styles.count} role="status" aria-live="polite">
+        {visible.length === announcements.length
+          ? `${announcements.length} announcements`
+          : `${visible.length} of ${announcements.length} announcements`}
+      </p>
 
       {visible.length === 0 ? (
         <p className={styles.muted}>
