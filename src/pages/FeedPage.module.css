@@ -44,21 +44,10 @@
   color: var(--text-muted);
 }
 
-.error {
-  border: 1px solid #f0c4c4;
-  background: #fdf2f2;
-  border-radius: 10px;
-  padding: 1rem 1.15rem;
-}
-
-.retry {
-  margin-top: 0.5rem;
-  padding: 0.45rem 0.9rem;
-  border: 1px solid var(--accent);
-  background: var(--accent);
-  color: #fff;
-  border-radius: 8px;
-  font-weight: 600;
+.count {
+  margin: 0 0 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
 }
 
 .srOnly {

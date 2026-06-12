@@ -2,6 +2,8 @@ import { Link, useLocation, useParams } from 'react-router-dom'
 import { useAnnouncementDetail } from '../hooks/useAnnouncementDetail'
 import { CategoryBadge, UrgentBadge } from '../components/Badges'
 import { BookmarkButton } from '../components/BookmarkButton'
+import { DetailSkeleton } from '../components/Skeleton'
+import { ErrorState } from '../components/ErrorState'
 import styles from './DetailPage.module.css'
 
 export function DetailPage() {
@@ -19,16 +21,16 @@ export function DetailPage() {
         ← Back
       </Link>
 
-      {status === 'loading' && <p className={styles.muted}>Loading announcement…</p>}
-
-      {status === 'error' && (
-        <div role="alert" className={styles.error}>
-          <p>{error.message}</p>
-          <button type="button" onClick={retry} className={styles.retry}>
-            Retry
-          </button>
-        </div>
+      {status === 'loading' && (
+        <>
+          <p className={styles.srOnly} role="status">
+            Loading announcement…
+          </p>
+          <DetailSkeleton />
+        </>
       )}
+
+      {status === 'error' && <ErrorState message={error.message} onRetry={retry} />}
 
       {status === 'success' && (
         <article className={styles.article}>
@@ -37,7 +39,9 @@ export function DetailPage() {
             {announcement.isUrgent && <UrgentBadge />}
           </div>
           <h1 className={styles.title}>{announcement.title}</h1>
-          <BookmarkButton id={announcement.id} />
+          <div className={styles.actions}>
+            <BookmarkButton id={announcement.id} />
+          </div>
           <p className={styles.body}>{announcement.body}</p>
         </article>
       )}
